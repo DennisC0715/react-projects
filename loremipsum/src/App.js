@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
-
+import text from "./data";
+import { useState } from "react";
 function App() {
+  const [number, setNumber] = useState(0);
+  const [paragraph, setParagraph] = useState([]);
+
+  const showParagraph = () => {
+    let amount = number;
+    if (number < 0) {
+      amount = 1;
+    }
+    if (number > text.length - 1) {
+      amount = text.length - 1;
+    }
+
+    const newParagraph = text.slice(0, amount);
+    setParagraph(newParagraph);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <section className="section-center">
+      <h3>TIRED OF BORING LOREM IPSUM</h3>
+      <div className="lorem-form">
+        <label htmlFor="paragraph">Paragraphs:</label>
+        <input
+          id="paragraph"
+          type="number"
+          value={number}
+          onChange={(e) => {
+            setNumber(e.target.value);
+          }}
+        />
+        <button
+          className="btn"
+          onClick={showParagraph}
+          onKeyDown={(event) => {}}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          GENERATE
+        </button>
+      </div>
+      {paragraph.map((item, index) => (
+        <article key={index} className="lorem-text">
+          <p>{item}</p>
+        </article>
+      ))}
+    </section>
   );
 }
 
