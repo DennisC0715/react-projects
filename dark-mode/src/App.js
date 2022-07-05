@@ -26,13 +26,15 @@ function App() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  const mode = theme === "light-theme" ? "Dark Mode" : " Normal Mode";
+
   return (
     <main>
       <nav>
         <div className="nav-center">
           <h1>overreacted</h1>
           <button className="btn" onClick={toggleTheme}>
-            toggle
+            {mode}
           </button>
         </div>
       </nav>
