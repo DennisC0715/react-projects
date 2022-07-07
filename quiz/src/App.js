@@ -4,7 +4,16 @@ import Modal from "./Modal";
 import { useGlobeContext } from "./context";
 
 function App() {
-  return <SetupForm />;
+  const { loading } = useGlobeContext();
+  if (loading) {
+    return <Loading />;
+  }
+  return (
+    <>
+      <SetupForm />
+      <Modal />
+    </>
+  );
 }
 
 export default App;
