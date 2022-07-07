@@ -13,30 +13,43 @@ const SetupForm = () => {
             <input
               id="question"
               type="number"
+              name="amount"
               className="form-input"
               value={quiz.amount}
               onChange={handleChange}
             />
           </div>
           <div className="form-control">
-            <label for="question">Category</label>
-            <select id="question" className="form-input" value="sport">
-              <option>sport</option>
-              <option>history</option>
-              <option>politics</option>
+            <label for="category">Category</label>
+            <select
+              id="category"
+              className="form-input"
+              value={quiz.category}
+              name="category"
+              onChange={handleChange}
+            >
+              <option value="sports">sport</option>
+              <option value="history">history</option>
+              <option value="politics">politics</option>
             </select>
           </div>
           <div className="form-control">
-            <label for="question">Select Difficulty</label>
-            <select id="question" className="form-input">
-              <option>easy</option>
-              <option>medium</option>
-              <option>hard</option>
+            <label for="difficulty">Select Difficulty</label>
+            <select
+              id="difficulty"
+              className="form-input"
+              value={quiz.difficulty}
+              name="difficulty"
+              onChange={handleChange}
+            >
+              <option value="easy">easy</option>
+              <option value="medium">medium</option>
+              <option value="hard">hard</option>
             </select>
           </div>
           {error && (
             <p className="error">
-              can't generate questions, please try different options{" "}
+              can't generate questions, please try different options
             </p>
           )}
           <button className="submit-btn">Start</button>
